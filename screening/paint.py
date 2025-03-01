@@ -1,7 +1,7 @@
 import neopixel
 import machine
 
-from pictures import pixelarts
+from screening.pictures import pixelarts
 
 PIN_NUM = 4  
 NUM_PIXELS = 100
