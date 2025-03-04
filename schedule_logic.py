@@ -19,7 +19,6 @@ def paint_pic_of(current_activity):
 
 async def update_pic():
     schedule_list = []
-    UTC_OFFSET = 3 * 3600
 
     with open('schedule.txt', 'r', encoding='utf-8') as file:
         schedule_list = []
@@ -31,9 +30,8 @@ async def update_pic():
 
     while True:
         if global_variables.baige_now_doing == "SCHEDULE":
-            current_time = time.localtime(time.time() + UTC_OFFSET)
-            # current_time = (2025, 3, 2, 15, 38, 56, 6, 61)
-            current_seconds = current_time[3] * 3600 + current_time[4] * 60 + current_time[5] #+ UTC_OFFSET
+            current_time = time.localtime(time.time() + global_variables.UTC_OFFSET)
+            current_seconds = current_time[3] * 3600 + current_time[4] * 60 + current_time[5]
 
             current_activity = None
             last_time_seconds = 0

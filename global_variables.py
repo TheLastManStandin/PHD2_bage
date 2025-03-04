@@ -1,1 +1,2 @@
 baige_now_doing = "SCHEDULE" # POMODORO, SCHEDULE
+UTC_OFFSET = 3 * 3600

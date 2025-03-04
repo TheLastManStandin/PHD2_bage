@@ -1,14 +1,17 @@
 import neopixel
 import time
 import ntptime
+import uasyncio as asyncio
+import machine
+
+import global_variables
+
 from wifi import connect_wifi
 from config import load_env
 from screening.paint import paint_this, np
 from schedule_logic import schedule_logic
 from pomodoro_logic import pomodoro_logic
 from button_check import button_press_check
-import uasyncio as asyncio
-import machine
 
 screen_dot_num = 0
 
@@ -43,8 +46,7 @@ except Exception as e:
     next_load_dot(False)
     raise KeyboardInterrupt
 
-UTC_OFFSET = 3 * 3600
-current_time = time.localtime(time.time() + UTC_OFFSET)
+current_time = time.localtime(time.time() + global_variables.UTC_OFFSET)
 print("Текущее время:", current_time)
 
 
