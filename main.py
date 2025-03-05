@@ -6,12 +6,12 @@ import machine
 
 import global_variables
 
-from wifi import connect_wifi
+from utils.wifi import connect_wifi
 from config import load_env
 from screening.paint import paint_this, np
-from schedule_logic import schedule_logic
-from pomodoro_logic import pomodoro_logic
-from button_check import button_press_check
+from moduls.schedule_logic import schedule_logic
+from moduls.pomodoro_logic import pomodoro_logic
+from utils.button_check import button_press_check
 
 screen_dot_num = 0
 
