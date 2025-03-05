@@ -16,7 +16,5 @@ async def button_press_check():
                 global_variables.baige_now_doing = "SCHEDULE"
                 print("Переключение на режим расписания")
                 time.sleep(2)
-        
-        # print(global_variables.baige_now_doing)
 
         await asyncio.sleep(0.2)
