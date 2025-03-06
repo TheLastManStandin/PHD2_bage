@@ -2,8 +2,8 @@
 from PIL import Image
 import os
 
-set_folder_path_here = "screening\\10x10_images"
-set_int_resolution_here = 10
+set_folder_path_here = "screening\\4x4_images"
+set_int_resolution_here = 4
 
 def img_to_list(img, resolution):
     x = resolution
