@@ -15,7 +15,7 @@ def update_display(progress, color):
     num_pixels = int(progress * NUM_PIXELS)
     pic = [(0, 0, 0) for _ in range(NUM_PIXELS)]
     
-    for i in range(NUM_PIXELS):
+    for i in range( NUM_PIXELS):
         if i < num_pixels:
             pic[i] = color
             if i > 0:

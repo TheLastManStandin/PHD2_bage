@@ -53,9 +53,9 @@ print("Текущее время:", current_time)
 async def main():
     for i in range(100):
         np[i] = (0, 0, 0)
-        
+
     asyncio.create_task(schedule_logic())
-    asyncio.create_task(pomodoro_logic(1, 1))
+    asyncio.create_task(pomodoro_logic())
     asyncio.create_task(button_press_check())
     
     asyncio.create_task(display_logic())

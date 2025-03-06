@@ -27,8 +27,6 @@ async def update_display(first_module=[],second_module=[],third_module=[],forth_
 
     for x in range(10):
         for y in range(10):
-            if (4 <= x and x <= 5) or (4 <= y and y <= 5):
-                np[x * 10 + y] = (20, 20, 20)
             if x < 4 and y < 4:
                 fill_pixel(x, y, first_module_iterator, brightness)
             if x > 5 and y < 4:
@@ -37,9 +35,15 @@ async def update_display(first_module=[],second_module=[],third_module=[],forth_
     np.write()
 
 async def display_logic():
+    for x in range(10):
+        for y in range(10):
+            if (4 <= x and x <= 5) or (4 <= y and y <= 5):
+                np[x * 10 + y] = (10, 10, 10)
+
     while True:
         await update_display(
             first_module=global_variables.schedule_logic_picture,
-            second_module=global_variables.pomodoro_logic_picture
+            second_module=global_variables.pomodoro_logic_picture,
+            brightness=0.2
             )
         await asyncio.sleep(1)
