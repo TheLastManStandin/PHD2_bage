@@ -11,6 +11,7 @@ from config import load_env
 from screening.paint import np, display_logic
 from moduls.schedule_logic import schedule_logic
 from moduls.pomodoro_logic import pomodoro_logic
+from moduls.gif_5x10_logic import gif_logic
 from utils.button_check import button_press_check
 
 screen_dot_num = 0
@@ -56,6 +57,7 @@ async def main():
 
     asyncio.create_task(schedule_logic())
     asyncio.create_task(pomodoro_logic())
+    asyncio.create_task(gif_logic())
     asyncio.create_task(button_press_check())
     
     asyncio.create_task(display_logic())

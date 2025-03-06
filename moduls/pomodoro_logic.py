@@ -1,5 +1,6 @@
 from screening.paint import np
-from screening.pictures_4x4 import pixelarts_4x4
+from picsNgifs.pictures_4x4 import pixelarts_4x4
+from picsNgifs.pictures_4x5 import pixelarts_4x5
 import neopixel
 import machine
 import time
@@ -11,7 +12,7 @@ def to_flat(picture):
     return [pixel for row in picture for pixel in row]
 
 def update_display(progress, color): 
-    NUM_PIXELS = 16
+    NUM_PIXELS = 20
     num_pixels = int(progress * NUM_PIXELS)
     pic = [(0, 0, 0) for _ in range(NUM_PIXELS)]
     
@@ -28,7 +29,7 @@ def update_display(progress, color):
 async def pomodoro_timer(work_duration, break_duration):
     work_duration = work_duration * 60
     break_duration = break_duration * 60
-    plug_pic = to_flat(pixelarts_4x4["Помидор.png"])
+    plug_pic = to_flat(pixelarts_4x5["Помидор.png"])
     """
     Реализует цикл Помодоро:
     - Рабочая сессия (по умолчанию 35 минут) с зелёным прогресс-баром.

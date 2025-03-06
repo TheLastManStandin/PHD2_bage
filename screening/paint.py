@@ -23,27 +23,46 @@ async def update_display(first_module=[],second_module=[],third_module=[],forth_
     first_module_iterator = iter(first_module)
     second_module_iterator = iter(second_module)
     third_module_iterator = iter(third_module)
-    forth_module_iterator = iter(forth_module)
+
+    if global_variables.modules == 4:
+        forth_module_iterator = iter(forth_module)
 
     for x in range(10):
         for y in range(10):
             if x < 4 and y < 4:
                 fill_pixel(x, y, first_module_iterator, brightness)
-            if x > 5 and y < 4:
+            if x > 4 and y < 4:
                 fill_pixel(x, y, second_module_iterator, brightness)
+            if y >= 5 and global_variables.modules == 3:
+                fill_pixel(x, y, third_module_iterator, brightness)
     
     np.write()
 
 async def display_logic():
-    for x in range(10):
-        for y in range(10):
-            if (4 <= x and x <= 5) or (4 <= y and y <= 5):
-                np[x * 10 + y] = (10, 10, 10)
+    if global_variables.modules == 4:
+        for x in range(10):
+            for y in range(10):
+                if (4 <= x and x <= 5) or (4 <= y and y <= 5):
+                    np[x * 10 + y] = (10, 10, 10)
 
-    while True:
-        await update_display(
-            first_module=global_variables.schedule_logic_picture,
-            second_module=global_variables.pomodoro_logic_picture,
-            brightness=0.2
-            )
-        await asyncio.sleep(1)
+        while True:
+            await update_display(
+                first_module=global_variables.schedule_logic_picture,
+                second_module=global_variables.pomodoro_logic_picture,
+                brightness=0.2
+                )
+            await asyncio.sleep(1)
+    elif global_variables.modules == 3:
+        for x in range(10):
+            for y in range(10):
+                if y < 5:
+                    np[x * 10 + y] = (10, 10, 10)
+
+        while True:
+            await update_display(
+                first_module=global_variables.schedule_logic_picture,
+                second_module=global_variables.pomodoro_logic_picture,
+                third_module=global_variables.gif_5x10_logic_picture,
+                brightness=0.1
+                )
+            await asyncio.sleep(0.5)

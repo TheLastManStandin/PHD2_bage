@@ -1,4 +1,4 @@
-from screening.pictures_4x4 import pixelarts_4x4
+from picsNgifs.pictures_4x4 import pixelarts_4x4
 import global_variables
 import uasyncio as asyncio
 import time
