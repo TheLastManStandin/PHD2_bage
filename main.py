@@ -6,12 +6,13 @@ import machine
 
 import global_variables
 
-from wifi import connect_wifi
+from utils.wifi import connect_wifi
 from config import load_env
-from screening.paint import paint_this, np
-from schedule_logic import schedule_logic
-from pomodoro_logic import pomodoro_logic
-from button_check import button_press_check
+from screening.paint import np, display_logic
+from moduls.schedule_logic import schedule_logic
+from moduls.pomodoro_logic import pomodoro_logic
+from moduls.gif_5x10_logic import gif_logic
+from utils.button_check import button_press_check
 
 screen_dot_num = 0
 
@@ -28,7 +29,6 @@ def next_load_dot(success):
 
 
 next_load_dot(True)
-# paint_this("spi")
 # 17 - bri ,16 - led ,2 - pass
 
 config = load_env()
@@ -52,9 +52,15 @@ print("Текущее время:", current_time)
 
 
 async def main():
+    for i in range(100):
+        np[i] = (0, 0, 0)
+
     asyncio.create_task(schedule_logic())
     asyncio.create_task(pomodoro_logic())
+    asyncio.create_task(gif_logic())
     asyncio.create_task(button_press_check())
+    
+    asyncio.create_task(display_logic())
 
     while True:
         await asyncio.sleep(1)
